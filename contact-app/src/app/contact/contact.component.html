@@ -1,0 +1,13 @@
+
+<h1>
+  Contact List
+</h1>
+<button (click)="add()">Add</button>
+<app-contact-form *ngIf="(formView) === null"></app-contact-form>
+<div *ngFor=" let item of contacts">
+  <div id="{{'firstname-' + item._id}}">{{item.FirstName}} </div>
+  <div id="{{'lastname-' + item._id}}">{{item.LastName}} </div>
+  <div id="{{ 'email-' + item._id}}" *ngIf=" (contactFlag.get(item._id) != null )"> {{ contactFlag.get(item._id).email }}</div>
+  <div id="{{'phone-' + item._id}}" *ngIf=" (contactFlag.get(item._id) != null )"> {{ contactFlag.get(item._id).phone }}</div>
+  <button id="{{item._id}}" (click)='toggle(item._id)'>Show</button>
+</div>

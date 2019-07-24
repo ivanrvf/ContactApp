@@ -1,0 +1,66 @@
+
+<h1> Add Contact</h1>
+
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+<div>
+  <label for="FirstName">
+    Firstname:
+    <input type="text" formControlName="FirstName"/>
+  </label>
+  <div *ngIf=" (contactForm.controls.FirstName.errors != null)">
+    
+      <div *ngIf="contactForm.controls.FirstName.errors.required">
+        First name is required.
+      </div>
+      <div *ngIf="contactForm.controls.FirstName.errors.minlength">
+        Name must be at least 3 characters long.
+      </div>
+</div>
+</div>
+<div>
+  <label>
+    LastName:
+    <input type="text" formControlName="LastName"/>
+  </label>
+  <div *ngIf=" (contactForm.controls.LastName.errors != null)">
+    
+      <div *ngIf="contactForm.controls.LastName.errors.required">
+        First name is required.
+      </div>
+      <div *ngIf="contactForm.controls.LastName.errors.minlength">
+        Name must be at least 3 characters long.
+      </div>
+</div>
+</div>
+<div>
+  <label for="email">
+    Email:
+    <input type="text" formControlName="email"/>
+  </label>
+  <div *ngIf=" (contactForm.controls.email.errors != null)">    
+      <div *ngIf="contactForm.controls.email.errors.required">
+        Email is required.
+      </div>
+      <div *ngIf="contactForm.controls.email.errors.email">
+        Email is not in correct format
+      </div>
+</div>
+</div>
+<div>
+  <label for="phone">
+    Phone:
+    <input type="text" formControlName="phone"/>
+  </label>
+  <div *ngIf=" (contactForm.controls.phone.errors != null)">    
+      <div *ngIf="contactForm.controls.phone.errors.required">
+        Email is required.
+      </div>
+      <div *ngIf="contactForm.controls.phone.errors.pattern" placeholder=" Phone: xxx-xxx-xxxx">
+        Phone is not in correct format (Correct format is xxx-xxx-xxxx )
+      </div>
+</div>
+</div>
+<div>
+  <input type="submit" value="submit" [disabled]="contactForm.status.toLowerCase() === 'invalid'"/>
+</div>
+</form>

@@ -1,0 +1,8 @@
+# ignore e2e file
+/contact-app/e2e
+
+# ignore editor file
+*.editorconfig
+
+# ignore .json file
+*.json
